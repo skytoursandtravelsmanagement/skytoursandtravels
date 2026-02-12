@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details | Sky Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --muted: #666666;
+            --radius: 40px;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 30px 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link { 
+            text-decoration: none; 
+            color: white; 
+            mix-blend-mode: difference;
+            transition: transform 0.4s var(--ease);
+            display: inline-block;
+        }
+        
+        .back-link:hover { transform: translateX(-5px); }
+
+        /* --- HERO HEADER (WITH PHOTO) --- */
+        .hero-header {
+            height: 60vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.7; /* Same vibe as main page */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        /* --- CONTENT AREA --- */
+        .content-area {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .main-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #333;
+            font-weight: 300;
+        }
+
+        .highlight-box {
+            margin-top: 40px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* --- FOOTER --- */
+        .footer-cta {
+            background: white;
+            color: black;
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-box b {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #aaa;
+        }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 1s var(--ease); }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero-header { height: 50vh; }
+            h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="jk.html" class="back-link">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+    </nav>
+
+    <header class="hero-header">
+        <!-- Same Hero Photo from Main Code -->
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1600" class="hero-img" alt="Mountain Header">
+        
+        <div class="hero-content">
+            <span class="logo-text reveal">Sky Tours And Travels</span>
+            <h1 class="reveal">Package Name</h1>
+        </div>
+    </header>
+
+    <main class="content-area">
+        <div class="main-text reveal">
+            <!-- EDIT THIS TEXT LATER -->
+            Sky Tours and Travels offers the most premium experience in this region. This package includes luxury stays, private transport in our Swift Desire, and personalized sightseeing.
+        </div>
+
+        <div class="highlight-box reveal">
+            <p style="font-weight: 600; margin-bottom: 15px; font-size: 1.1rem;">Package Highlights:</p>
+            <ul style="list-style: none; color: var(--muted); line-height: 2.2;">
+                <li>• 4 Days & 3 Nights</li>
+                <li>• Premium Hotel Accommodations</li>
+                <li>• Private Swift Desire SUV</li>
+                <li>• Professional Local Driver</li>
+                <li>• Breakfast & Dinner Included</li>
+            </ul>
+        </div>
+    </main>
+
+    <section class="footer-cta reveal">
+        <h2 class="cta-title">Sky Tours And Travels</h2>
+        <div class="contact-grid">
+            <div class="contact-box"><b>Founder</b><span>Akash Kiran</span></div>
+            <div class="contact-box"><b>Booking</b><span>8825014352</span></div>
+            <div class="contact-box"><b>Email</b><span>skytoursandtravels@gmail.com</span></div>
+            <div class="contact-box"><b>Location</b><span>Domana, Jammu</span></div>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
