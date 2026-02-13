@@ -19,13 +19,6 @@
             --ultra-ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* --- Three Dot Menu Styles --- */
-.sky-menu-container {
-    position: absolute;
-    top: 15px; /* Moves them higher up toward the corner */
-    right: 5px;
-    z-index: 1000;
-}
 
 .kebab-icon {
     display: flex;
@@ -415,19 +408,28 @@
     </h1>
 
     <div style="width: 85%; max-width: 450px; position: relative;">
-        <input type="text" id="packageSearch" placeholder="Search destinations..." 
-               style="width: 100%; padding: 12px 25px; border-radius: 50px; border: 1.5px solid #000; background: transparent; outline: none; font-family: 'Plus Jakarta Sans', sans-serif;">
+       <div style="width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px 0; gap: 15px;">
+    
+    <h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 1px; text-transform: uppercase;">
+        SKY TOURS AND TRAVELS
+    </h1>
+
+    <div style="width: 90%; max-width: 500px; display: flex; align-items: center; justify-content: center; gap: 15px;">
         
-        <div id="searchSuggestions" style="position: absolute; width: 100%; background: #fff; border-radius: 15px; top: 55px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; z-index: 100; text-align: left; overflow: hidden; border: 1px solid #eee;"></div>
+        <div style="flex-grow: 1; position: relative;">
+            <input type="text" id="packageSearch" placeholder="Search destinations..." 
+                   style="width: 100%; padding: 12px 25px; border-radius: 50px; border: 1.5px solid #000; background: transparent; outline: none; font-family: 'Plus Jakarta Sans', sans-serif;">
+            
+            <div id="searchSuggestions" style="position: absolute; width: 100%; background: #fff; border-radius: 15px; top: 55px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; z-index: 100; text-align: left; overflow: hidden; border: 1px solid #eee;"></div>
+        </div>
+
+        <div class="kebab-icon" onclick="toggleMenu()" style="cursor: pointer; display: flex; flex-direction: column; gap: 4px; padding: 5px;">
+            <span style="width: 5px; height: 5px; background: #000; border-radius: 50%;"></span>
+            <span style="width: 5px; height: 5px; background: #000; border-radius: 50%;"></span>
+            <span style="width: 5px; height: 5px; background: #000; border-radius: 50%;"></span>
+        </div>
     </div>
 </div>
-  
-    <!-- Section 1: Hero -->
-    
-    <section>
-        <div class="image-container hero-frame reveal" onclick="bubbleUp(this)">
-            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1600" alt="Mountain View">
-        </div>
         <div class="content reveal reveal-delay-1">
             <h2>Welcome to Sky Tours And Travels</h2>
             <div class="text-box">
@@ -595,6 +597,7 @@ window.onclick = function(event) {
 </script>
 
 </html>
+
 
 
 
