@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulmarg Special | Sky Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --muted: #666666;
+            --radius: 40px;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 30px 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link { 
+            text-decoration: none; 
+            color: white; 
+            mix-blend-mode: difference;
+            transition: transform 0.4s var(--ease);
+            display: inline-block;
+        }
+        
+        .back-link:hover { transform: translateX(-5px); }
+
+        .hero-header {
+            height: 70vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: #000;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero-content { position: relative; z-index: 10; }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .content-area {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .photo-entry {
+            margin-bottom: 120px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .photo-container {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            overflow: hidden;
+            border-radius: var(--radius);
+            background: #f0f0f0;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s var(--ease);
+        }
+
+        .photo-entry:hover img { transform: scale(1.05); }
+
+        .insta-btn {
+            width: 26px; 
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #000000;
+            transition: all 0.3s var(--ease);
+            align-self: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .insta-btn:hover { transform: scale(1.2); }
+
+        .desc-box {
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .desc-box b {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .desc-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        /* --- RESTORED HIGHLIGHTS BOX STYLE --- */
+        .highlight-box {
+            margin: 60px 0 120px 0;
+            padding: 50px;
+            background: #f8f9fa; /* Changed back to light grey */
+            color: var(--text); /* Text back to black */
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .highlight-box b { font-size: 1.5rem; display: block; margin-bottom: 20px; }
+        .highlight-box ul { list-style: none; color: var(--muted); }
+        .highlight-box li { margin-bottom: 10px; font-weight: 300; }
+
+        .footer-cta {
+            background: white;
+            color: black;
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-box b {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #aaa;
+        }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s var(--ease); }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero-header { height: 50vh; }
+            .desc-box { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="jk.html" class="back-link">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+    </nav>
+
+    <header class="hero-header">
+        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?q=80&w=1600" class="hero-img" alt="Gulmarg">
+        <div class="hero-content">
+            <span class="logo-text reveal">Sky Tours And Travels</span>
+            <h1 class="reveal">20 Days of Gulmarg</h1>
+        </div>
+    </header>
+
+    <main class="content-area" id="gallery-container">
+        <!-- JS will inject 20 sections here -->
+    </main>
+
+    <section class="footer-cta reveal">
+        <h2 class="cta-title">Sky Tours And Travels</h2>
+        <div class="contact-grid">
+            <div class="contact-box"><b>Founder</b><span>Akash Kiran</span></div>
+            <div class="contact-box"><b>Booking</b><span>8825014352</span></div>
+            <div class="contact-box"><b>Email</b><span>skytoursandtravels@gmail.com</span></div>
+            <div class="contact-box" id="location-box"><b>Location</b><span>Domana, Jammu</span></div>
+        </div>
+    </section>
+
+    <script>
+        const galleryData = [
+            { img: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07", title: "The Frozen Kingdom", desc: "Walking through Gulmarg in winter is like living in a Lana Del Rey song. Everything is still, white, and hauntingly beautiful. The perfect start to your journey." },
+            { img: "https://images.unsplash.com/photo-1548013146-72479768bbaa", title: "High Altitude Dreams", desc: "The Gondola ride takes you so high that the world below just disappears. It's just you, the wind, and the endless Himalayan peaks." },
+            { img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da", title: "Golden Hour Glow", desc: "As the sun sets, the snow turns into a field of diamonds. It’s that 'Summertime Sadness' but in the middle of a frozen winter." },
+            { img: "https://images.unsplash.com/photo-1506461883276-594a12b11cf3", title: "Pine Shadows", desc: "Tall pine trees heavy with snow create the most aesthetic shadows. Every corner of Gulmarg is a photo waiting to happen." },
+            { img: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4", title: "The Quiet Morning", desc: "Wake up to a view that feels unreal. Our hand-picked hotels ensure you have the best front-row seat to the mountains." },
+            { img: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1", title: "Alpine Trails", desc: "Explore the hidden trails of the meadow. Our local drivers know every secret path that tourists usually miss." },
+            { img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800", title: "Road to Heaven", desc: "The drive from Tangmarg to Gulmarg is a cinematic experience in itself. Your Swift Desire will glide through the winding snow roads." },
+            { img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e", title: "Crystal Skies", desc: "On clear days, the sky is so blue it feels like glass. The contrast with the white snow is absolutely breathtaking." },
+            { img: "https://images.unsplash.com/photo-1433086466390-f74b8f279c4b", title: "Frozen Waterfalls", desc: "Witness water turned into ice sculptures. Nature’s own art gallery, tucked away in the valleys of Kashmir." },
+            { img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e", title: "Into the Woods", desc: "The deep woods of Gulmarg are where you find true peace. No noise, just the sound of snow crunching under your boots." },
+            { img: "https://images.unsplash.com/photo-1532375810709-75b1da00537c", title: "Evening Serenity", desc: "When the lights of the small cottages flicker on, Gulmarg looks like a fairy tale village. Cozy and warm vibes only." },
+            { img: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05", title: "Misty Valleys", desc: "Sometimes the fog rolls in, making the landscape look mysterious and moody. Very Lana, very aesthetic." },
+            { img: "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d", title: "Nature’s Mirror", desc: "Small frozen streams reflect the mountains around them. It's a double dose of beauty in every frame." },
+            { img: "https://images.unsplash.com/photo-1426604966848-d7adac402bff", title: "Wild & Free", desc: "Gulmarg isn't just a place; it's a feeling of being wild and free from the chaos of the city." },
+            { img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470", title: "Lakeside Chills", desc: "Even the lakes here have a cool, crisp energy. We take you to the spots where the water is as clear as your dreams." },
+            { img: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e", title: "The Great Beyond", desc: "Looking out from the Phase 2 Gondola station, you feel like you're at the edge of the world." },
+            { img: "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1", title: "Sunset Silhouettes", desc: "Watch the horizon turn orange and pink. It’s the perfect time for those deep, thinking-about-life photos." },
+            { img: "https://images.unsplash.com/photo-1433838552652-f9a46b332c40", title: "Snow Dust", desc: "When the wind blows, the snow dust flies like magic powder. It’s a literal winter wonderland." },
+            { img: "https://images.unsplash.com/photo-1502082553048-f009c37129b9", title: "The Old Oak", desc: "Ancient trees standing strong against the winter. They’ve seen a thousand winters, just like this one." },
+            { img: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07", title: "Kashmiri Hospitality", desc: "End your journey with the warmth of Kashmiri tea and the comfort of Sky Tours’ premium service." }
+        ];
+
+        const container = document.getElementById('gallery-container');
+
+        galleryData.forEach((item, index) => {
+            const section = document.createElement('div');
+            section.className = 'photo-entry reveal';
+            section.innerHTML = `
+                <div class="photo-container">
+                    <img src="${item.img}?q=80&w=1200&auto=format&fit=crop" alt="${item.title}">
+                </div>
+                <a href="https://instagram.com/sky_toursandtravels" class="insta-btn" target="_blank">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+                <div class="desc-box">
+                    <b>${item.title}</b>
+                    <p>${item.desc}</p>
+                </div>
+            `;
+            container.appendChild(section);
+        });
+
+        const hBox = document.createElement('div');
+        hBox.className = 'highlight-box reveal';
+        hBox.innerHTML = `
+            <b>Sky Tours Package Highlights:</b>
+            <ul>
+                <li>• 4 Days & 3 Nights of Luxury</li>
+                <li>• Premium Stays in Hand-picked Hotels</li>
+                <li>• Private Swift Desire SUV for the whole trip</li>
+                <li>• Professional Local Driver who knows the vibe</li>
+                <li>• Daily Breakfast & Dinner Included</li>
+            </ul>
+        `;
+        container.appendChild(hBox);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
