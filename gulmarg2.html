@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Details | Sky Tours</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #ffffff;
+            --text: #000000;
+            --muted: #666666;
+            --radius: 40px;
+            --ease: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 30px 5%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link { 
+            text-decoration: none; 
+            color: white; 
+            mix-blend-mode: difference;
+            transition: transform 0.4s var(--ease);
+            display: inline-block;
+        }
+        
+        .back-link:hover { transform: translateX(-5px); }
+
+        /* --- HERO HEADER --- */
+        .hero-header {
+            height: 60vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        /* --- CONTENT AREA --- */
+        .content-area {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* --- INFO BOXES --- */
+        .info-box {
+            margin-bottom: 30px;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: var(--radius);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        .info-box b {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        /* --- PHOTO GRID --- */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px 25px; 
+            margin: 40px 0;
+        }
+
+        .photo-card {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .photo-item {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            border-radius: 24px;
+            background: #f8f8f8;
+            margin-bottom: 20px;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s var(--ease);
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-caption {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text);
+            margin-bottom: 20px;
+            min-height: 100px; 
+            font-weight: 300;
+        }
+
+        /* --- B&W INSTA LOGO (BOLD & RIGHT ALIGNED) --- */
+        .insta-btn {
+            width: 26px; 
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #000000; /* Fully black */
+            transition: all 0.3s var(--ease);
+            opacity: 1; /* Fully visible */
+            align-self: flex-end; 
+        }
+
+        .insta-btn:hover {
+            transform: scale(1.15);
+        }
+
+        .insta-btn svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- FOOTER --- */
+        .footer-cta {
+            background: white;
+            color: black;
+            padding: 100px 20px;
+            text-align: center;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-box b {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            color: #aaa;
+        }
+
+        /* ANIMATIONS */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 1s var(--ease); }
+        .visible { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 768px) {
+            .hero-header { height: 50vh; }
+            h1 { font-size: 2.5rem; }
+            .photo-grid { grid-template-columns: 1fr; gap: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="jk.html" class="back-link">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </a>
+    </nav>
+
+    <header class="hero-header">
+        <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&q=80&w=1600" class="hero-img" alt="Gulmarg Snow">
+        
+        <div class="hero-content">
+            <span class="logo-text reveal">Sky Tours And Travels</span>
+            <h1 class="reveal">Gulmarg Special</h1>
+        </div>
+    </header>
+
+    <main class="content-area">
+        
+        <div class="info-box reveal">
+            <b>The Beauty of Gulmarg</b>
+            <p>
+                Gulmarg is where the earth meets the sky in a breathtaking dance of white and blue. Known as the "Meadow of Flowers," this Himalayan paradise transforms into a cinematic wonderland during the winters. It's the perfect place to feel that "Summertime Sadness" melt away into the crisp mountain air. From the iconic Gondola rides that take you above the clouds to the quiet charm of snow-covered pines, Gulmarg holds a magic that stays with you forever.
+            </p>
+        </div>
+
+        <div class="info-box reveal">
+            <b>Our Premium Packages</b>
+            <p>
+                At Sky Tours and Travels, we curate Gulmarg experiences that define luxury. Our exclusive packages are designed so you can soak in the beauty without a single worry. You'll be picked up in our premium Swift Desire by professional local guides and stay in the finest hand-picked hotels. We don't just provide a tour; we provide a soulful journey through the heart of Kashmir, ensuring every moment is as flawless as the landscape.
+            </p>
+        </div>
+
+        <div class="photo-grid">
+            <script>
+                const photoUrls = [
+                    "https://images.unsplash.com/photo-1596422846543-75c6fc197f07",
+                    "https://images.unsplash.com/photo-1548013146-72479768bbaa",
+                    "https://images.unsplash.com/photo-1524492412937-b28074a5d7da",
+                    "https://images.unsplash.com/photo-1506461883276-594a12b11cf3",
+                    "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4",
+                    "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1",
+                    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800",
+                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+                    "https://images.unsplash.com/photo-1433086466390-f74b8f279c4b",
+                    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+                    "https://images.unsplash.com/photo-1532375810709-75b1da00537c",
+                    "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05",
+                    "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d",
+                    "https://images.unsplash.com/photo-1426604966848-d7adac402bff",
+                    "https://images.unsplash.com/photo-1501785888041-af3ef285b470",
+                    "https://images.unsplash.com/photo-1472214103451-9374bd1c798e",
+                    "https://images.unsplash.com/photo-1475924156734-496f6cac6ec1",
+                    "https://images.unsplash.com/photo-1433838552652-f9a46b332c40",
+                    "https://images.unsplash.com/photo-1502082553048-f009c37129b9",
+                    "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07"
+                ];
+
+                photoUrls.forEach((url, index) => {
+                    document.write(`
+                        <div class="photo-card reveal">
+                            <div class="photo-item">
+                                <img src="${url}?q=80&w=600&auto=format&fit=crop" alt="Travel ${index + 1}">
+                            </div>
+                            <div class="photo-caption">
+                                [Enter your story here... describe the feeling of the mountains, the crisp air, or the luxury of the stay.]
+                            </div>
+                            <a href="https://instagram.com/sky_toursandtravels" class="insta-btn" target="_blank">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    `);
+                });
+            </script>
+        </div>
+
+        <div class="info-box reveal">
+            <b>Package Highlights:</b>
+            <ul style="list-style: none; color: var(--muted); line-height: 2.2;">
+                <li>• 4 Days & 3 Nights</li>
+                <li>• Premium Hotel Accommodations</li>
+                <li>• Private Swift Desire SUV</li>
+                <li>• Professional Local Driver</li>
+                <li>• Breakfast & Dinner Included</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="footer-cta reveal">
+        <h2 class="cta-title">Sky Tours And Travels</h2>
+        <div class="contact-grid">
+            <div class="contact-box"><b>Founder</b><span>Akash Kiran</span></div>
+            <div class="contact-box"><b>Booking</b><span>8825014352</span></div>
+            <div class="contact-box"><b>Email</b><span>skytoursandtravels@gmail.com</span></div>
+            <div class="contact-box"><b>Location</b><span>Domana, Jammu</span></div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
