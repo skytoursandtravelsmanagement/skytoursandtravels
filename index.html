@@ -21,7 +21,7 @@
 
         /* --- Three Dot Menu Styles --- */
 .sky-menu-container {
-    position: fixed;
+    position: absolute;
     top: 15px; /* Moves them higher up toward the corner */
     right: 5px;
     z-index: 1000;
@@ -408,9 +408,11 @@
 </div>
 
 
-  <div style="display: flex; flex-direction: column; align-items: center; width: 100%; padding: 20px 0; gap: 15px;">
+ <div style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 30px; gap: 20px;">
     
-    <h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 24px; letter-spacing: 1px;">SKY TOURS AND TRAVELS</h1>
+    <h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 1px; text-transform: uppercase; color: #000;">
+        SKY TOURS AND TRAVELS
+    </h1>
 
     <div style="width: 85%; max-width: 450px; position: relative;">
         <input type="text" id="packageSearch" placeholder="Search destinations..." 
@@ -419,7 +421,6 @@
         <div id="searchSuggestions" style="position: absolute; width: 100%; background: #fff; border-radius: 15px; top: 55px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; z-index: 100; text-align: left; overflow: hidden; border: 1px solid #eee;"></div>
     </div>
 </div>
-
   
     <!-- Section 1: Hero -->
     
@@ -594,6 +595,7 @@ window.onclick = function(event) {
 </script>
 
 </html>
+
 
 
 
