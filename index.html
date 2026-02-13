@@ -19,6 +19,66 @@
             --ultra-ease: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
+        /* --- Three Dot Menu Styles --- */
+.sky-menu-container {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+}
+
+.kebab-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.kebab-icon span {
+    width: 5px;
+    height: 5px;
+    background: var(--text);
+    border-radius: 50%;
+}
+
+.sky-dropdown {
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background: var(--bg);
+    min-width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: none;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: all var(--ultra-ease);
+}
+
+.sky-dropdown a {
+    display: block;
+    padding: 14px 20px;
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+}
+
+.sky-dropdown a:hover {
+    background: var(--box-bg);
+}
+
+.active-menu { 
+    display: block; 
+    animation: slideDown 0.4s var(--ultra-ease); 
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
         /* --- Smooth Layout --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
@@ -328,6 +388,19 @@
 </head>
 <body>
 
+    <div class="sky-menu-container">
+    <div class="kebab-icon" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+    <div id="dropdownContent" class="sky-dropdown">
+        <a href="#">Saved Destinations</a>
+        <a href="#">My Booked Package</a>
+        <a href="#">My Saved Images</a>
+        <hr style="border:0; border-top:1px solid #eee; margin:0;">
+        <a href="#">Account & Settings</a>
+    </div>
+</div>
+
     <nav>
         <h1>Sky Tours And Travels</h1>
     </nav>
@@ -490,7 +563,21 @@ Private Sightseeing Cab</p>
     </script>
 </body>
 
+    <script>
+function toggleMenu() {
+    document.getElementById("dropdownContent").classList.toggle("active-menu");
+}
+
+// Close menu if user clicks anywhere else
+window.onclick = function(event) {
+    if (!event.target.closest('.sky-menu-container')) {
+        document.getElementById("dropdownContent").classList.remove("active-menu");
+    }
+}
+</script>
+
 </html>
+
 
 
 
