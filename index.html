@@ -583,7 +583,7 @@ Private Sightseeing Cab</p>
 
     <script>
 function toggleMenu() {
-    document.getElementById("dropdownContent").classList.toggle("active-menu");
+    document.getElementById("dropdownContent").classList.toggle("active-menu");  
 }
 
 // Close menu if user clicks anywhere else
@@ -593,7 +593,22 @@ window.onclick = function(event) {
     }
 }
 </script>
+const searchInput = document.getElementById('packageSearch');
+const destinations = document.querySelectorAll('.dest-column');
 
+searchInput.addEventListener('input', (e) => {
+  const searchString = e.target.value.toLowerCase();
+  
+  destinations.forEach(dest => {
+    const destName = dest.querySelector('h3').textContent.toLowerCase();
+    
+    if (destName.includes(searchString)) {
+      dest.style.display = ''; 
+    } else {
+      dest.style.display = 'none'; 
+    }
+  });
+});
 </html>
 
 
