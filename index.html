@@ -436,7 +436,7 @@
             
             <h3 class="reveal reveal-delay-2">Why Ride With Us</h3>
             <div class="text-box reveal reveal-delay-2">
-                <p><b>The Swift Desire Comfort:</b> We exclusively use the Swift Desire. It's premium, and super smooth.<br><br>
+                <p><b>The Swift Desire Comfort:</b> We exclusively use the Swift Desire. It's premium, and very smooth.<br><br>
                 <b>All Over Service:</b> We cover every corner of Jammu & Kashmir and Himachal Pradesh. No destination is too far.<br><br>
                 <b>Jammu Roots:</b> As locals, we know the best routes and hidden spots that big agencies might miss.</p>
            </div>
@@ -608,13 +608,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const destName = h3.textContent.toLowerCase();
           dest.style.display = destName.includes(searchString) ? '' : 'none';
         }
-      });
-    });
-  }
-});
-</script>
+    <script>
 const searchInput = document.getElementById('packageSearch');
 const suggestionsBox = document.getElementById('searchSuggestions');
+const destinations = document.querySelectorAll('.dest-column');
 
 // Your mini database of all destinations
 const allPackages = [
@@ -632,27 +629,32 @@ const allPackages = [
     { name: "Magnetic Hill", link: "magnetic.html" }
 ];
 
-if (searchInput && suggestionsBox) {
+if (searchInput) {
     searchInput.addEventListener('input', function() {
         const query = this.value.toLowerCase().trim();
-        suggestionsBox.innerHTML = ''; // Clear old results
         
+        // 1. FILTER VISIBLE CARDS ON PAGE
+        destinations.forEach(dest => {
+            const h4 = dest.querySelector('h4'); // Changed to h4 to match your HTML
+            if (h4) {
+                const destName = h4.textContent.toLowerCase();
+                dest.style.display = destName.includes(query) ? '' : 'none';
+            }
+        });
+
+        // 2. SHOW DROPDOWN SUGGESTIONS
+        suggestionsBox.innerHTML = ''; 
         if (query === '') {
             suggestionsBox.style.display = 'none';
             return;
         }
 
-        // Find packages that match what the user typed
-        const filtered = allPackages.filter(pkg => 
-            pkg.name.toLowerCase().includes(query)
-        );
+        const filtered = allPackages.filter(pkg => pkg.name.toLowerCase().includes(query));
 
         if (filtered.length > 0) {
             suggestionsBox.style.display = 'block';
             filtered.forEach(pkg => {
                 const div = document.createElement('div');
-                
-                // Styling the dropdown items
                 div.style.padding = '15px 25px';
                 div.style.cursor = 'pointer';
                 div.style.borderBottom = '1px solid #eee';
@@ -660,38 +662,31 @@ if (searchInput && suggestionsBox) {
                 div.style.fontWeight = '600';
                 div.textContent = pkg.name;
                 
-                // Hover effect
                 div.onmouseover = () => div.style.background = '#f8f9fa';
                 div.onmouseout = () => div.style.background = '#fff';
-                
-                // Go to the page when clicked!
-                div.onclick = () => {
-                    window.location.href = pkg.link;
-                };
+                div.onclick = () => { window.location.href = pkg.link; };
                 
                 suggestionsBox.appendChild(div);
             });
         } else {
-            // If they type a place you don't have
             suggestionsBox.style.display = 'block';
             const noResult = document.createElement('div');
             noResult.style.padding = '15px 25px';
             noResult.style.color = '#666';
-            noResult.textContent = 'No destinations found ';
+            noResult.textContent = 'No destinations found ❌';
             suggestionsBox.appendChild(noResult);
         }
     });
 
-    // Close the dropdown if they click anywhere else on the screen
-    document.addEventListener('click', function(e) {
+    // Close dropdown if clicking outside
+    document.addEventListener('click', (e) => {
         if (e.target !== searchInput && e.target !== suggestionsBox) {
             suggestionsBox.style.display = 'none';
         }
     });
 }
+</script>
 </html>
-
-
 
 
 
