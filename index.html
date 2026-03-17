@@ -436,7 +436,7 @@
             
             <h3 class="reveal reveal-delay-2">Why Ride With Us</h3>
             <div class="text-box reveal reveal-delay-2">
-                <p><b>The Swift Desire Comfort:</b> We exclusively use the Swift Desire. It's premium, and very smooth.<br><br>
+                <p><b>The Swift Desire Comfort:</b> We exclusively use the Swift Desire. It's premium, and super smooth.<br><br>
                 <b>All Over Service:</b> We cover every corner of Jammu & Kashmir and Himachal Pradesh. No destination is too far.<br><br>
                 <b>Jammu Roots:</b> As locals, we know the best routes and hidden spots that big agencies might miss.</p>
            </div>
@@ -593,7 +593,26 @@ window.onclick = function(event) {
     }
 }
 </script>
-// Grab the search bar and the suggestions dropdown box
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const searchInput = document.getElementById('packageSearch');
+  const destinations = document.querySelectorAll('.dest-column');
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const searchString = e.target.value.toLowerCase().trim();
+      
+      destinations.forEach(dest => {
+        const h3 = dest.querySelector('h3');
+        if (h3) {
+          const destName = h3.textContent.toLowerCase();
+          dest.style.display = destName.includes(searchString) ? '' : 'none';
+        }
+      });
+    });
+  }
+});
+</script>
 const searchInput = document.getElementById('packageSearch');
 const suggestionsBox = document.getElementById('searchSuggestions');
 
