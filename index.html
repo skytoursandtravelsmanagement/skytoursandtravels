@@ -21,9 +21,8 @@
 
         /* --- Three Dot Menu Styles --- */
 .sky-menu-container {
-    position: absolute;
-    top: 15px; /* Moves them higher up toward the corner */
-    right: 5px;
+    position: relative; /* Change from absolute to relative */
+    display: inline-block; /* Add this line */
     z-index: 1000;
 }
 
@@ -408,18 +407,32 @@
 </div>
 
 
- <div style="position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; padding-top: 30px; gap: 20px;">
-    
-    <h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 1px; text-transform: uppercase; color: #000;">
+<div style="display: flex; flex-direction: column; align-items: center; width: 100%; padding-top: 30px; gap: 60px;"> <h1 style="margin: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 1px; text-transform: uppercase; color: #000;">
         SKY TOURS AND TRAVELS
     </h1>
 
-    <div style="width: 85%; max-width: 450px; position: relative;">
-        <input type="text" id="packageSearch" placeholder="Search destinations" 
-               style="width: 100%; padding: 12px 25px; border-radius: 50px; border: 1.5px solid #000; background: transparent; outline: none; font-family: 'Plus Jakarta Sans', sans-serif;">
+    <div style="width: 90%; max-width: 450px; display: flex; align-items: center; gap: 10px; position: relative;">
         
-        <div id="searchSuggestions" style="position: absolute; width: 100%; background: #fff; border-radius: 15px; top: 55px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; z-index: 100; text-align: left; overflow: hidden; border: 1px solid #eee;"></div>
+        <div style="flex-grow: 1; position: relative;">
+            <input type="text" id="packageSearch" placeholder="Search destinations" 
+                   style="width: 100%; padding: 12px 25px; border-radius: 50px; border: 1.5px solid #000; background: transparent; outline: none;">
+            <div id="searchSuggestions" style="position: absolute; width: 100%; background: #fff; border-radius: 15px; top: 55px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); display: none; z-index: 100;"></div>
+        </div>
+
+        <div class="sky-menu-container" style="position: relative; top: 0; right: 0;">
+            <div class="kebab-icon" onclick="toggleMenu()" style="padding: 5px;">
+                <span></span><span></span><span></span>
+            </div>
+            <div id="dropdownContent" class="sky-dropdown" style="top: 45px; right: 0;">
+                <a href="#">Saved Destinations</a>
+                <a href="#">My Booked Package</a>
+                <a href="#">My Saved Images</a>
+                <hr style="border:0; border-top:1px solid #eee; margin:0;">
+                <a href="#">Account & Settings</a>
+            </div>
+        </div>
     </div>
+</div>
 </div>
   
     <!-- Section 1: Hero -->
@@ -436,7 +449,7 @@
             
             <h3 class="reveal reveal-delay-2">Why Ride With Us</h3>
             <div class="text-box reveal reveal-delay-2">
-                <p><b>The Swift Desire Comfort:</b> We exclusively use the Swift Desire. It's premium, and super smooth.<br><br>
+                <p><b>The Swift Desire Comfort:</b> We exclusively use the Swift Desire. It's premium, and very smooth.<br><br>
                 <b>All Over Service:</b> We cover every corner of Jammu & Kashmir and Himachal Pradesh. No destination is too far.<br><br>
                 <b>Jammu Roots:</b> As locals, we know the best routes and hidden spots that big agencies might miss.</p>
            </div>
